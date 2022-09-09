@@ -1,0 +1,10 @@
+CREATE TABLE accounts (
+  accountId int, -- Both a primary and foreign key
+  accountName varchar(30) NOT NULL,
+  balance int(30) NOT NULL,
+  accountSerialNo varchar(30) NOT NULL,
+  PRIMARY KEY (accountId),
+  FOREIGN KEY (accountId)
+      REFERENCES customers (customer)
+      ON DELETE CASCADE
+);
