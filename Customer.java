@@ -10,6 +10,7 @@ String customerEmail;
 String customerPhoneNo;
 String customerUsername;
 String customerAddress;
+String customerSerial;
 
 //methods
 public void addCustomer(){
@@ -24,6 +25,8 @@ public void addCustomer(){
     customerUsername = input.nextLine();
     System.out.println("Enter the customer address");
     customerAddress = input.nextLine();
+    System.out.println("Enter customer serial No");
+    customerSerial = input.nextLine();
     System.out.println("Enter the customer id");
     customerId = input.nextInt();
 
@@ -32,7 +35,7 @@ public void addCustomer(){
   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bank-Management-System-DB","root","");
   Statement stmt = conn.createStatement();
   System.out.println("Connected to the database");
-  String sql = "insert into customers() values('"+customerId+"','"+customerName+"','"+customerEmail+"','"+customerPhoneNo+"','"+customerUsername+"','"+customerAddress+"')";
+  String sql = "insert into customers() values('"+customerId+"','"+customerName+"','"+customerEmail+"','"+customerPhoneNo+"','"+customerUsername+"','"+customerAddress+"','"+customerSerial+"')";
   stmt.executeUpdate(sql);
   System.out.println("Customer added successfully");
      } catch (Exception  e){System.out.println(e);}
@@ -60,4 +63,6 @@ public void searchCustomer(int  serialNo){
         System.out.println(res.getString(1) +" "+res.getString(2)+" "+res.getString(3));
     }catch(Exception e){System.out.println(e);}
 }
+
+
 }
