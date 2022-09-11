@@ -11,16 +11,11 @@ public class Bank {
 
     //methods
     public static void main(String[] args){
-        //Account der = new Account("Billy biketi",1);
-        //Customer billy = new Customer();
-        //billy.addCustomer();
-        //der.addAccount();
-       // der.searchAccount("checkoo5");
-      //der.showDisplay();
       Bank stanbic = new Bank();
-      Account account1 = new Account("Mercy","merc001");
-      //stanbic.registerAccount();
+       stanbic.registerAccount();
+      Account account1 = new Account("Mercy","savings001");
       account1.showDisplay();
+      
      
       
     }

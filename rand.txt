@@ -8,3 +8,6 @@ CREATE TABLE accounts (
       REFERENCES customers (customer)
       ON DELETE CASCADE
 );
+
+
+UPDATE accounts SET accountName = "Checkings account",balance = 2000, accountSerialNo = "check001" WHERE accountId = 1
