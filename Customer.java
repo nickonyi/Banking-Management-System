@@ -15,8 +15,8 @@ String customerSerial;
 //methods
 public void addCustomer(){
     Scanner input = new Scanner(System.in);
-    System.out.println("Enter the customer name");
-    customerName = input.nextLine();
+    System.out.println("Enter customer name");
+    String customerName = input.nextLine();
     System.out.println("Enter the customer email");
     customerEmail = input.nextLine();
     System.out.println("Enter the customer phone Number");
@@ -52,15 +52,28 @@ public void deleteCustomer(int serialNo){
     } catch (Exception e){System.out.println(e);}
 }
 
-public void searchCustomer(int  serialNo){
+public void searchCustomer(String  serialNo){
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bank-Management-System-DB","root","");
         Statement stmt = conn.createStatement();
-        String sql = "Select * from customers where  customerId='"+serialNo+"'";
+        String sql = "Select * from customers where  customerSerial='"+serialNo+"'";
         ResultSet res = stmt.executeQuery(sql);
-        res.next();
-        System.out.println(res.getString(1) +" "+res.getString(2)+" "+res.getString(3));
+       if(res.next()){
+        String sql2 = "SELECT customers.customerName,customers.customer_email,customers.customer_phone_No,accountSerialNo,accountName,balance FROM accounts INNER JOIN customers on accounts.accountId = customers.customerId where  customerSerial='"+serialNo+"'";
+        ResultSet res2 = stmt.executeQuery(sql2);
+        res2.next();
+        System.out.println("Name:" + res2.getString(1));
+        System.out.println("Email:" + res2.getString(2));
+        System.out.println("Phione_Number:" + res2.getString(3));
+        System.out.println("Account_serialNo:" + res2.getString(4));
+        System.out.println("Account_name:" + res2.getString(5));
+        System.out.println("Account_balance:" + res2.getString(6));
+
+       } else {
+        System.out.println("This account is not available");
+       }
+        
     }catch(Exception e){System.out.println(e);}
 }
 

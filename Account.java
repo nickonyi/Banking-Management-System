@@ -24,7 +24,7 @@ public class Account {
       Scanner input = new Scanner(System.in);
       System.out.println("Enter the account name");
       accountName = input.nextLine();
-      System.out.println("Enter account number");
+      System.out.println("Enter account id");
       accountNumber = input.nextInt();
       System.out.println("Enter the account balance");
       balance = input.nextInt();
@@ -89,7 +89,7 @@ public class Account {
             char option = '\0';
             Scanner input = new Scanner(System.in);
             System.out.println("Welcome to stanbick bank, " + customerName + "!");
-            System.out.println("Your ID is: " + customerId);
+            System.out.println("Your ID is: " + accountSerial);
             System.out.println();
             System.out.println("What would you like to do?");
             System.out.println();
