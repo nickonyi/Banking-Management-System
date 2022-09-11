@@ -14,23 +14,23 @@ String customerSerial;
 
 //methods
 public void addCustomer(){
-    Scanner input = new Scanner(System.in);
-    System.out.println("Enter customer name");
-    String customerName = input.nextLine();
-    System.out.println("Enter the customer email");
-    customerEmail = input.nextLine();
-    System.out.println("Enter the customer phone Number");
-    customerPhoneNo = input.nextLine();
-    System.out.println("Enter the customer username");
-    customerUsername = input.nextLine();
-    System.out.println("Enter the customer address");
-    customerAddress = input.nextLine();
-    System.out.println("Enter customer serial No");
-    customerSerial = input.nextLine();
-    System.out.println("Enter the customer id");
-    customerId = input.nextInt();
+    try (Scanner input = new Scanner(System.in)) {
+		System.out.println("Enter customer name");
+		String customerName = input.nextLine();
+		System.out.println("Enter the customer email");
+		customerEmail = input.nextLine();
+		System.out.println("Enter the customer phone Number");
+		customerPhoneNo = input.nextLine();
+		System.out.println("Enter the customer username");
+		customerUsername = input.nextLine();
+		System.out.println("Enter the customer address");
+		customerAddress = input.nextLine();
+		System.out.println("Enter customer serial No");
+		customerSerial = input.nextLine();
+		System.out.println("Enter the customer id");
+		customerId = input.nextInt();
 
-     try {
+		 try {
   Class.forName("com.mysql.cj.jdbc.Driver");
   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bank-Management-System-DB","root","");
   Statement stmt = conn.createStatement();
@@ -38,7 +38,8 @@ public void addCustomer(){
   String sql = "insert into customers() values('"+customerId+"','"+customerName+"','"+customerEmail+"','"+customerPhoneNo+"','"+customerUsername+"','"+customerAddress+"','"+customerSerial+"')";
   stmt.executeUpdate(sql);
   System.out.println("Customer added successfully");
-     } catch (Exception  e){System.out.println(e);}
+		 } catch (Exception  e){System.out.println(e);}
+	}
 }
 
 public void deleteCustomer(int serialNo){
